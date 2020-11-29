@@ -33,13 +33,16 @@ while game_on:
         my_snake.grow()
 
     if my_snake.head.xcor() > 290 or my_snake.head.xcor() < -290 or my_snake.head.ycor() > 290 or my_snake.head.ycor() < -290:
-        game_on = False
-        my_score.game_over()
+        my_score.reset()
+        my_food.refresh()
+        my_snake.reset()
 
     for segment in my_snake.snake_body[1:]:
         if my_snake.head.distance(segment) < 10:
-            game_on = False
-            my_score.game_over()
+            my_score.reset()
+            my_food.refresh()
+            my_snake.reset()
+
 
 
 my_screen.exitonclick()

@@ -13,15 +13,19 @@ class Snake():
     def __init__(self):
         self.snake_body = []
         self.create_snake()
-        self.head = self.snake_body[0]
         self.tail = self.snake_body[-1]
         self.speed = 0.1
-
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
             self.extend(position)
+        self.head = self.snake_body[0]
 
+    def reset(self):
+        for segment in self.snake_body:
+            segment.goto(1000, 1000)
+        self.snake_body.clear()
+        self.create_snake()
 
     def move(self):
         for seg_number in range(len(self.snake_body) - 1, 0, -1):
